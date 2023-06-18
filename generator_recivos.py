@@ -3,17 +3,6 @@ import faker
 from datetime import datetime, timedelta
 import time
 
-
-# CREATE TABLE recibos (
-#     id SERIAL NOT NULL,
-#     id_cliente INT NOT NULL,
-#     id_metodo_pago INT NOT NULL,
-#     fecha DATE NOT NULL,
-#     PRIMARY KEY (id),
-#     FOREIGN KEY (id_cliente) REFERENCES clientes(id),
-#     FOREIGN KEY (id_metodo_pago) REFERENCES metodos_pago(id)
-# );
-
 def generate_random_date():
     start_date = datetime(2013, 1, 1)
     end_date = datetime(2023, 12, 31)
@@ -29,32 +18,23 @@ def generate_receipt():
  for i in range(cantidad):
     f.write(f"INSERT INTO recibos (id_cliente, id_metodo_pago, fecha) VALUES ({random.randint(1,1045)} , {random.randint(1,6)} , '{generate_random_date()}');\n")
 
-# CREATE TABLE recibos_productos (
-#     id_recibo INT NOT NULL,
-#     id_producto INT NOT NULL,
-#     cantidad INT NOT NULL,
-#     FOREIGN KEY (id_recibo) REFERENCES recibos(id),
-#     FOREIGN KEY (id_producto) REFERENCES productos(id)
-# );
-
 def generate_receipt_product():
     f2 = open("recibos_productos.sql", "w")
     cantidad2 = 250
     for i in range(cantidad2):
         f2.write(f"INSERT INTO recibos_productos (id_recibo, id_producto, cantidad) VALUES ({random.randint(1,351)} , {random.randint(1,566)} , {random.randint(1,50)});\n")
 
-# print("¿Que quieres hacer?")
-# print("1. Generar recibos")
-# print("2. Generar recibos de productos")
-# try:
-#     opcion = input("Opción: ")
-#     if opcion == 1:
-#         generate_receipt()
-#     elif opcion == 2:
-#         generate_receipt_product()
-#     else:
-#         print("Opción inválida")
-# except ValueError:
-#     print("Debes ingresar un número entero como opción")
+ print("¿Que quieres hacer?")
+ print("1. Generar recibos")
+ print("2. Generar recibos de productos")
+ try:
+    opcion = input("Opción: ")
+     if opcion == 1:
+        generate_receipt()
+    elif opcion == 2:
+        generate_receipt_product()
+    else:
+        print("Opción inválida")
+except ValueError:
+    print("Debes ingresar un número entero como opción")
     
-generate_receipt_product();
