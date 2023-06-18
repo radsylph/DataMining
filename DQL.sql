@@ -1,3 +1,4 @@
+-- Metodos de pago
 INSERT INTO metodos_pago (nombre) VALUES ('Moneda virtual');
 INSERT INTO metodos_pago (nombre) VALUES ('Efectivo');
 INSERT INTO metodos_pago (nombre) VALUES ('Tarjeta de crédito');
